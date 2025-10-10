@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Shift - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Safe <span>Shift</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="drivers.html" class="nav-link"><i class="fas fa-users"></i> Drivers</a>
+                <a href="vitals.html" class="nav-link"><i class="fas fa-heartbeat"></i> Vitals</a>
+                <a href="motion.html" class="nav-link"><i class="fas fa-running"></i> Motion</a>
+                <a href="location.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> Location</a>
+                <a href="alerts.html" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Alerts</a>
+            </nav>
+        </header>
+
+        <div class="dashboard-overview">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalDrivers">5</div>
+                        <div class="stat-label">Active Drivers</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="normalVitals">4</div>
+                        <div class="stat-label">Normal Vitals</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="activeAlerts">1</div>
+                        <div class="stat-label">Active Alerts</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalDistance">1,245</div>
+                        <div class="stat-label">Total KM Today</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="drivers-grid" id="driversGrid">
+                <!-- Drivers will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

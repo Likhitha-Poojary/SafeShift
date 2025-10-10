@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Analysis - Safe Shift</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Safe <span>Shift</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="drivers.html" class="nav-link"><i class="fas fa-users"></i> Drivers</a>
+                <a href="vitals.html" class="nav-link"><i class="fas fa-heartbeat"></i> Vitals</a>
+                <a href="motion.html" class="nav-link active"><i class="fas fa-running"></i> Motion</a>
+                <a href="location.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> Location</a>
+                <a href="alerts.html" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Alerts</a>
+            </nav>
+        </header>
+
+        <div class="page-header">
+            <h2><i class="fas fa-running"></i> Motion Analysis</h2>
+            <div class="motion-controls">
+                <button class="btn-primary" id="startMotionDemo">
+                    <i class="fas fa-play"></i> Start Demo
+                </button>
+                <button class="btn-warning" id="stopMotionDemo">
+                    <i class="fas fa-stop"></i> Stop Demo
+                </button>
+            </div>
+        </div>
+
+        <div class="motion-grid">
+            <div class="card motion-charts">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-bar"></i> Motion Data</h3>
+                </div>
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <h4>Acceleration (m/s²)</h4>
+                        <canvas id="accelerationChart"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <h4>Gyroscope (°/s)</h4>
+                        <canvas id="gyroscopeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card motion-metrics">
+                <div class="card-header">
+                    <h3><i class="fas fa-tachometer-alt"></i> Real-time Metrics</h3>
+                </div>
+                <div class="metrics-grid">
+                    <div class="motion-metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-head-side"></i>
+                        </div>
+                        <div class="metric-info">
+                            <div class="metric-value" id="headMovement">Normal</div>
+                            <div class="metric-label">Head Movement</div>
+                        </div>
+                    </div>
+                    <div class="motion-metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="metric-info">
+                            <div class="metric-value" id="stillnessDuration">2.1s</div>
+                            <div class="metric-label">Stillness Duration</div>
+                        </div>
+                    </div>
+                    <div class="motion-metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-vibration"></i>
+                        </div>
+                        <div class="metric-info">
+                            <div class="metric-value" id="vibrationStatus">Inactive</div>
+                            <div class="metric-label">Vibration Alert</div>
+                        </div>
+                    </div>
+                    <div class="motion-metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-shake"></i>
+                        </div>
+                        <div class="metric-info">
+                            <div class="metric-value" id="motionScore">78%</div>
+                            <div class="metric-label">Motion Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card motion-drivers">
+                <div class="card-header">
+                    <h3><i class="fas fa-users"></i> Driver Motion Status</h3>
+                </div>
+                <div class="motion-drivers-list" id="motionDriversList">
+                    <!-- Driver motion status will be loaded here -->
+                </div>
+            </div>
+
+            <div class="card motion-settings">
+                <div class="card-header">
+                    <h3><i class="fas fa-cog"></i> Motion Settings</h3>
+                </div>
+                <div class="settings-container">
+                    <div class="setting-item">
+                        <label>Stillness Threshold</label>
+                        <input type="range" id="stillnessThreshold" min="1" max="10" value="3" step="0.5">
+                        <span id="stillnessValue">3.0 seconds</span>
+                    </div>
+                    <div class="setting-item">
+                        <label>Head Movement Sensitivity</label>
+                        <input type="range" id="movementSensitivity" min="1" max="10" value="5">
+                        <span id="sensitivityValue">Medium</span>
+                    </div>
+                    <div class="setting-item">
+                        <label>Vibration Intensity</label>
+                        <input type="range" id="vibrationIntensity" min="1" max="10" value="7">
+                        <span id="intensityValue">High</span>
+                    </div>
+                    <button class="btn-primary" onclick="saveMotionSettings()">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+    <script src="motion.js"></script>
+</body>
+</html>

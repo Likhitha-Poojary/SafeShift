@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts Management - Safe Shift</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Safe <span>Shift</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="drivers.html" class="nav-link"><i class="fas fa-users"></i> Drivers</a>
+                <a href="vitals.html" class="nav-link"><i class="fas fa-heartbeat"></i> Vitals</a>
+                <a href="motion.html" class="nav-link"><i class="fas fa-running"></i> Motion</a>
+                <a href="location.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> Location</a>
+                <a href="alerts.html" class="nav-link active"><i class="fas fa-exclamation-triangle"></i> Alerts</a>
+            </nav>
+        </header>
+
+        <div class="page-header">
+            <h2><i class="fas fa-exclamation-triangle"></i> Alerts Management</h2>
+            <div class="alert-controls">
+                <button class="btn-primary" id="markAllRead">
+                    <i class="fas fa-check-double"></i> Mark All Read
+                </button>
+                <button class="btn-warning" id="clearAlerts">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+        </div>
+
+        <div class="alerts-grid">
+            <div class="card active-alerts">
+                <div class="card-header">
+                    <h3><i class="fas fa-bell"></i> Active Alerts</h3>
+                    <span class="badge" id="activeAlertsCount">2</span>
+                </div>
+                <div class="alerts-list" id="activeAlertsList">
+                    <!-- Active alerts will be loaded here -->
+                </div>
+            </div>
+
+            <div class="card alert-history">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> Alert History</h3>
+                </div>
+                <div class="history-container">
+                    <div class="history-filters">
+                        <select id="alertTypeFilter">
+                            <option value="all">All Types</option>
+                            <option value="fatigue">Fatigue</option>
+                            <option value="vitals">Vitals</option>
+                            <option value="motion">Motion</option>
+                            <option value="location">Location</option>
+                        </select>
+                        <select id="timeFilter">
+                            <option value="24h">Last 24 Hours</option>
+                            <option value="7d">Last 7 Days</option>
+                            <option value="30d">Last 30 Days</option>
+                        </select>
+                    </div>
+                    <div class="history-list" id="alertHistoryList">
+                        <!-- Alert history will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card alert-stats">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-pie"></i> Alert Statistics</h3>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-chart">
+                        <canvas id="alertStatsChart"></canvas>
+                    </div>
+                    <div class="stat-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Fatigue Alerts</span>
+                            <span class="breakdown-value">45%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Vitals Alerts</span>
+                            <span class="breakdown-value">30%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Motion Alerts</span>
+                            <span class="breakdown-value">20%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Other Alerts</span>
+                            <span class="breakdown-value">5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card alert-settings">
+                <div class="card-header">
+                    <h3><i class="fas fa-cog"></i> Alert Settings</h3>
+                </div>
+                <div class="settings-container">
+                    <div class="setting-group">
+                        <h4>Notification Preferences</h4>
+                        <div class="setting-item">
+                            <input type="checkbox" id="emailAlerts" checked>
+                            <label for="emailAlerts">Email Notifications</label>
+                        </div>
+                        <div class="setting-item">
+                            <input type="checkbox" id="smsAlerts" checked>
+                            <label for="smsAlerts">SMS Notifications</label>
+                        </div>
+                        <div class="setting-item">
+                            <input type="checkbox" id="pushAlerts" checked>
+                            <label for="pushAlerts">Push Notifications</label>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h4>Alert Thresholds</h4>
+                        <div class="setting-item">
+                            <label>Fatigue Score Alert</label>
+                            <input type="number" id="fatigueThreshold" value="75" min="50" max="95">
+                            <span>%</span>
+                        </div>
+                        <div class="setting-item">
+                            <label>Heart Rate Alert</label>
+                            <input type="number" id="hrThreshold" value="55" min="40" max="70">
+                            <span>BPM (Below)</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="saveAlertSettings()">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="alerts.js"></script>
+</body>
+</html>

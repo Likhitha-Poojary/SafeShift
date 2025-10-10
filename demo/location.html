@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Tracking - Safe Shift</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Safe <span>Shift</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="drivers.html" class="nav-link"><i class="fas fa-users"></i> Drivers</a>
+                <a href="vitals.html" class="nav-link"><i class="fas fa-heartbeat"></i> Vitals</a>
+                <a href="motion.html" class="nav-link"><i class="fas fa-running"></i> Motion</a>
+                <a href="location.html" class="nav-link active"><i class="fas fa-map-marker-alt"></i> Location</a>
+                <a href="alerts.html" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Alerts</a>
+            </nav>
+        </header>
+
+        <div class="page-header">
+            <h2><i class="fas fa-map-marker-alt"></i> Location Tracking</h2>
+            <div class="location-controls">
+                <button class="btn-primary" id="refreshLocations">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn-warning" id="simulateRoute">
+                    <i class="fas fa-route"></i> Simulate Route
+                </button>
+            </div>
+        </div>
+
+        <div class="location-grid">
+            <div class="card map-container">
+                <div class="card-header">
+                    <h3><i class="fas fa-map"></i> Live Driver Locations</h3>
+                </div>
+                <div class="map-placeholder-large">
+                    <div class="map-overlay">
+                        <div class="driver-markers" id="driverMarkers">
+                            <!-- Driver markers will be added here -->
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <div class="legend-color active"></div>
+                                <span>Active</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color warning"></div>
+                                <span>Warning</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color danger"></div>
+                                <span>Alert</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-center">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Live GPS Tracking Active</p>
+                        <small>5 drivers being monitored</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card location-details">
+                <div class="card-header">
+                    <h3><i class="fas fa-info-circle"></i> Driver Locations</h3>
+                </div>
+                <div class="locations-list" id="locationsList">
+                    <!-- Location details will be loaded here -->
+                </div>
+            </div>
+
+            <div class="card route-info">
+                <div class="card-header">
+                    <h3><i class="fas fa-route"></i> Route Information</h3>
+                </div>
+                <div class="route-details">
+                    <div class="route-metric">
+                        <div class="route-label">Total Distance Today</div>
+                        <div class="route-value" id="totalDistance">1,245 km</div>
+                    </div>
+                    <div class="route-metric">
+                        <div class="route-label">Average Speed</div>
+                        <div class="route-value" id="avgSpeed">62 km/h</div>
+                    </div>
+                    <div class="route-metric">
+                        <div class="route-label">Active Routes</div>
+                        <div class="route-value" id="activeRoutes">5</div>
+                    </div>
+                    <div class="route-metric">
+                        <div class="route-label">GPS Signal</div>
+                        <div class="route-value" id="gpsSignal">Strong</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card location-history">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> Recent Locations</h3>
+                </div>
+                <div class="history-list" id="locationHistory">
+                    <!-- Location history will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+    <script src="location.js"></script>
+</body>
+</html>
